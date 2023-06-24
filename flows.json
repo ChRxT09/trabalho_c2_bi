@@ -1,0 +1,380 @@
+[
+    {
+        "id": "51b14923dc56ff45",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "95964c8097a28457",
+        "type": "inject",
+        "z": "51b14923dc56ff45",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 240,
+        "wires": [
+            [
+                "fb5eead154274628"
+            ]
+        ]
+    },
+    {
+        "id": "fb5eead154274628",
+        "type": "postgresql",
+        "z": "51b14923dc56ff45",
+        "name": "dim_tempo",
+        "query": "CREATE TABLE if not exists dim_tempo (\n    id SERIAL PRIMARY KEY,\n    ano int,\n    mes int,\n    dia int\n);",
+        "postgreSQLConfig": "c3c8ba40e3199d23",
+        "split": false,
+        "rowsPerMsg": 1,
+        "outputs": 1,
+        "x": 310,
+        "y": 240,
+        "wires": [
+            [
+                "6097b1dcfd9a10bf",
+                "3f7ba6d1ca5215bc"
+            ]
+        ]
+    },
+    {
+        "id": "6097b1dcfd9a10bf",
+        "type": "postgresql",
+        "z": "51b14923dc56ff45",
+        "name": "dim_professor",
+        "query": "CREATE TABLE if not exists dim_professor (\n    id SERIAL PRIMARY KEY,\n    nome varchar(100),\n    data_admissao TIMESTAMP,\n    data_demissao TIMESTAMP\n);",
+        "postgreSQLConfig": "c3c8ba40e3199d23",
+        "split": false,
+        "rowsPerMsg": 1,
+        "outputs": 1,
+        "x": 520,
+        "y": 340,
+        "wires": [
+            [
+                "b8fcafb98f4941b9",
+                "da1d75b023d6cf5f"
+            ]
+        ]
+    },
+    {
+        "id": "b8fcafb98f4941b9",
+        "type": "postgresql",
+        "z": "51b14923dc56ff45",
+        "name": "dim_curso",
+        "query": "CREATE TABLE if not exists dim_curso (\n    id SERIAL PRIMARY KEY,\n    nome varchar(100),\n    carga_horaria int,\n    ativo boolean\n);",
+        "postgreSQLConfig": "c3c8ba40e3199d23",
+        "split": false,
+        "rowsPerMsg": 1,
+        "outputs": 1,
+        "x": 730,
+        "y": 440,
+        "wires": [
+            [
+                "b48869aa878a95da",
+                "ba9a74ce7f60f514"
+            ]
+        ]
+    },
+    {
+        "id": "b48869aa878a95da",
+        "type": "postgresql",
+        "z": "51b14923dc56ff45",
+        "name": "dim_disciplina",
+        "query": "CREATE TABLE if not exists dim_disciplina (\n    id SERIAL PRIMARY KEY,\n    nome varchar(100),\n    carga_horaria int,\n    ativo boolean\n);",
+        "postgreSQLConfig": "c3c8ba40e3199d23",
+        "split": false,
+        "rowsPerMsg": 1,
+        "outputs": 1,
+        "x": 940,
+        "y": 520,
+        "wires": [
+            [
+                "5e63887fc810798e",
+                "fa4aabb51fa8b4c6"
+            ]
+        ]
+    },
+    {
+        "id": "3f7ba6d1ca5215bc",
+        "type": "postgresql",
+        "z": "51b14923dc56ff45",
+        "name": "idx_tempo",
+        "query": "CREATE INDEX if not exists idx_id_tempo ON dim_tempo (id);",
+        "postgreSQLConfig": "c3c8ba40e3199d23",
+        "split": false,
+        "rowsPerMsg": 1,
+        "outputs": 1,
+        "x": 530,
+        "y": 240,
+        "wires": [
+            [
+                "47bc7ba72b9de0bf"
+            ]
+        ]
+    },
+    {
+        "id": "da1d75b023d6cf5f",
+        "type": "postgresql",
+        "z": "51b14923dc56ff45",
+        "name": "idx_professor",
+        "query": "CREATE INDEX if not exists idx_id_professor ON dim_professor (id);",
+        "postgreSQLConfig": "c3c8ba40e3199d23",
+        "split": false,
+        "rowsPerMsg": 1,
+        "outputs": 1,
+        "x": 720,
+        "y": 340,
+        "wires": [
+            [
+                "68ddd0f01d66e682"
+            ]
+        ]
+    },
+    {
+        "id": "ba9a74ce7f60f514",
+        "type": "postgresql",
+        "z": "51b14923dc56ff45",
+        "name": "idx_curso",
+        "query": "CREATE INDEX if not exists idx_id_curso ON dim_curso (id);",
+        "postgreSQLConfig": "c3c8ba40e3199d23",
+        "split": false,
+        "rowsPerMsg": 1,
+        "outputs": 1,
+        "x": 920,
+        "y": 440,
+        "wires": [
+            [
+                "705f53fda2a6c10c"
+            ]
+        ]
+    },
+    {
+        "id": "5e63887fc810798e",
+        "type": "postgresql",
+        "z": "51b14923dc56ff45",
+        "name": "idx_disciplina",
+        "query": "CREATE INDEX if not exists idx_id_disciplina ON dim_disciplina (id);",
+        "postgreSQLConfig": "c3c8ba40e3199d23",
+        "split": false,
+        "rowsPerMsg": 1,
+        "outputs": 1,
+        "x": 1130,
+        "y": 520,
+        "wires": [
+            [
+                "bf7ea535eb914df9"
+            ]
+        ]
+    },
+    {
+        "id": "fa4aabb51fa8b4c6",
+        "type": "postgresql",
+        "z": "51b14923dc56ff45",
+        "name": "fato_resultado_professor",
+        "query": "CREATE TABLE if not exists fato_resultado_professor (\n    id SERIAL PRIMARY KEY,\n    id_curso INTEGER REFERENCES dim_curso(id),\n    id_disciplina INTEGER REFERENCES dim_disciplina(id),\n    id_curso INTEGER REFERENCES dim_disciplina(id),\n    id_professor INTEGER REFERENCES dim_disciplina(id),\n    resultado_pontualidade int,\n    resultado_didatica int,\n    resultado_avaliacoes int\n);",
+        "postgreSQLConfig": "c3c8ba40e3199d23",
+        "split": false,
+        "rowsPerMsg": 1,
+        "outputs": 1,
+        "x": 1210,
+        "y": 640,
+        "wires": [
+            [
+                "aac75e4a01f19109",
+                "924bbb9f42e199c3"
+            ]
+        ]
+    },
+    {
+        "id": "aac75e4a01f19109",
+        "type": "postgresql",
+        "z": "51b14923dc56ff45",
+        "name": "fato_resultado_curso",
+        "query": "CREATE TABLE if not exists fato_resultado_curso (\n    id SERIAL PRIMARY KEY,\n    id_curso INTEGER REFERENCES dim_curso(id),\n    id_disciplina INTEGER REFERENCES dim_disciplina(id),\n    id_curso INTEGER REFERENCES dim_disciplina(id),\n    --id_professor INTEGER REFERENCES dim_disciplina(id),\n    resultado_atuacao_mercado int,\n    resultado_equipe int,\n    resultado_coordenacao int\n);",
+        "postgreSQLConfig": "c3c8ba40e3199d23",
+        "split": false,
+        "rowsPerMsg": 1,
+        "outputs": 1,
+        "x": 1460,
+        "y": 640,
+        "wires": [
+            [
+                "2e8834cd977ab0e4",
+                "6b725a7fee4bc6bd"
+            ]
+        ]
+    },
+    {
+        "id": "2e8834cd977ab0e4",
+        "type": "postgresql",
+        "z": "51b14923dc56ff45",
+        "name": "fato_qtd_respostas",
+        "query": "-- partindo do conceito de que as respostas podem ser numa escala de 1 a 10, \n-- sendo 1 para ruim e 10 para excelente\nCREATE TABLE if not exists fato_qtd_respostas (\n    id SERIAL PRIMARY KEY,\n    id_curso INTEGER REFERENCES dim_curso(id),\n    id_disciplina INTEGER REFERENCES dim_disciplina(id),\n    id_curso INTEGER REFERENCES dim_disciplina(id),\n    id_professor INTEGER REFERENCES dim_disciplina(id),\n    resposta_nivel_1 int,\n    resposta_nivel_2 int,\n    resposta_nivel_3 int,\n    resposta_nivel_4 int,\n    resposta_nivel_5 int,\n    resposta_nivel_6 int,\n    resposta_nivel_7 int,\n    resposta_nivel_8 int,\n    resposta_nivel_9 int,\n    resposta_nivel_10 int\n);",
+        "postgreSQLConfig": "c3c8ba40e3199d23",
+        "split": false,
+        "rowsPerMsg": 1,
+        "outputs": 1,
+        "x": 1690,
+        "y": 640,
+        "wires": [
+            [
+                "ce684bd6d640ab51"
+            ]
+        ]
+    },
+    {
+        "id": "ce684bd6d640ab51",
+        "type": "debug",
+        "z": "51b14923dc56ff45",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1880,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "bf7ea535eb914df9",
+        "type": "debug",
+        "z": "51b14923dc56ff45",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1300,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "705f53fda2a6c10c",
+        "type": "debug",
+        "z": "51b14923dc56ff45",
+        "name": "debug 3",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1120,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "68ddd0f01d66e682",
+        "type": "debug",
+        "z": "51b14923dc56ff45",
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 920,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "47bc7ba72b9de0bf",
+        "type": "debug",
+        "z": "51b14923dc56ff45",
+        "name": "debug 5",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 700,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "924bbb9f42e199c3",
+        "type": "debug",
+        "z": "51b14923dc56ff45",
+        "name": "debug 6",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1440,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "6b725a7fee4bc6bd",
+        "type": "debug",
+        "z": "51b14923dc56ff45",
+        "name": "debug 7",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1680,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "c3c8ba40e3199d23",
+        "type": "postgreSQLConfig",
+        "name": "teste",
+        "host": "127.0.0.1",
+        "hostFieldType": "str",
+        "port": "5030",
+        "portFieldType": "num",
+        "database": "dev",
+        "databaseFieldType": "str",
+        "ssl": "false",
+        "sslFieldType": "bool",
+        "applicationName": "",
+        "applicationNameType": "str",
+        "max": "10",
+        "maxFieldType": "num",
+        "idle": "1000",
+        "idleFieldType": "num",
+        "connectionTimeout": "10000",
+        "connectionTimeoutFieldType": "num",
+        "user": "dev",
+        "userFieldType": "str",
+        "password": "dev",
+        "passwordFieldType": "str"
+    }
+]
