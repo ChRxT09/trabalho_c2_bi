@@ -63,6 +63,21 @@
         <topic>sentence</topic>
         <type>Lorem</type>
       </field>
+      <field>
+        <name>resultado_professor</name>
+        <topic>randomDigit</topic>
+        <type>Number</type>
+      </field>
+      <field>
+        <name>resultado_curso</name>
+        <topic>randomDigit</topic>
+        <type>Number</type>
+      </field>
+      <field>
+        <name>resultado_disciplina</name>
+        <topic>randomDigit</topic>
+        <type>Number</type>
+      </field>
     </fields>
     <locale>pt-BR</locale>
     <attributes/>
@@ -114,13 +129,13 @@
     <footer>N</footer>
     <format>DOS</format>
     <compression>None</compression>
-    <encoding>UTF-8</encoding>
+    <encoding/>
     <endedLine/>
     <fileNameInField>N</fileNameInField>
     <fileNameField/>
     <create_parent_folder>Y</create_parent_folder>
     <file>
-      <name>C:\Users\usuario\Desktop\uotput.txt</name>
+      <name>file</name>
       <servlet_output>N</servlet_output>
       <do_not_open_new_file_init>Y</do_not_open_new_file_init>
       <extention>txt</extention>
@@ -137,70 +152,10 @@
       <splitevery/>
     </file>
     <fields>
-      <field>
-        <name>id</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>professor</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>curso</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>disciplina</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>data</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
     </fields>
     <attributes/>
     <GUI>
-      <xloc>624</xloc>
+      <xloc>656</xloc>
       <yloc>224</yloc>
     </GUI>
   </transform>
