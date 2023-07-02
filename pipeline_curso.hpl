@@ -43,7 +43,7 @@
       <schema_name/>
     </partitioning>
     <cache_size>5000</cache_size>
-    <commit>100</commit>
+    <commit>1000</commit>
     <connection>teste</connection>
     <fields>
       <date>
@@ -51,35 +51,36 @@
         <name/>
         <to>date_to</to>
       </date>
+      <field>
+        <lookup>resultado_curso</lookup>
+        <name>resultado_curso</name>
+        <update>Insert</update>
+      </field>
       <key>
         <lookup>curso</lookup>
         <name>curso</name>
       </key>
-      <key>
-        <lookup>resultado_curso</lookup>
-        <name>resultado_curso</name>
-      </key>
       <return>
-        <creation_method>tablemax</creation_method>
+        <creation_method>autoinc</creation_method>
         <name>sk_curso</name>
         <rename/>
         <version>version</version>
       </return>
     </fields>
-    <max_year>2199</max_year>
-    <min_year>1900</min_year>
+    <max_year>2023</max_year>
+    <min_year>2022</min_year>
     <preload_cache>N</preload_cache>
     <schema/>
     <sequence/>
     <start_date_field_name/>
-    <table>dim table name</table>
+    <table>dim_curso</table>
     <update>Y</update>
     <useBatch>N</useBatch>
     <use_start_date_alternative>N</use_start_date_alternative>
     <attributes/>
     <GUI>
-      <xloc>608</xloc>
-      <yloc>208</yloc>
+      <xloc>544</xloc>
+      <yloc>80</yloc>
     </GUI>
   </transform>
   <transform>
@@ -96,18 +97,16 @@
     <fields>
       <field>
         <name>curso</name>
-        <rename/>
       </field>
       <field>
         <name>resultado_curso</name>
-        <rename/>
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
     <attributes/>
     <GUI>
-      <xloc>400</xloc>
-      <yloc>208</yloc>
+      <xloc>336</xloc>
+      <yloc>80</yloc>
     </GUI>
   </transform>
   <transform>
@@ -298,8 +297,8 @@
     <sizeFieldName/>
     <attributes/>
     <GUI>
-      <xloc>224</xloc>
-      <yloc>208</yloc>
+      <xloc>160</xloc>
+      <yloc>80</yloc>
     </GUI>
   </transform>
   <transform_error_handling>

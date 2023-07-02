@@ -32,6 +32,83 @@
     </hop>
   </order>
   <transform>
+    <name>Dimension lookup/update</name>
+    <type>DimensionLookup</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <cache_size>5000</cache_size>
+    <commit>100</commit>
+    <connection>teste</connection>
+    <fields>
+      <date>
+        <from>date_from</from>
+        <name/>
+        <to>date_to</to>
+      </date>
+      <key>
+        <lookup>professor</lookup>
+        <name>professor</name>
+      </key>
+      <key>
+        <lookup>resultado_professor</lookup>
+        <name>resultado_professor</name>
+      </key>
+      <return>
+        <creation_method>tablemax</creation_method>
+        <name>sk_professor</name>
+        <rename/>
+        <version>version</version>
+      </return>
+    </fields>
+    <max_year>2199</max_year>
+    <min_year>1900</min_year>
+    <preload_cache>N</preload_cache>
+    <schema/>
+    <sequence/>
+    <start_date_field_name/>
+    <table>dim_professor</table>
+    <update>Y</update>
+    <useBatch>N</useBatch>
+    <use_start_date_alternative>N</use_start_date_alternative>
+    <attributes/>
+    <GUI>
+      <xloc>608</xloc>
+      <yloc>208</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>Select values</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>professor</name>
+      </field>
+      <field>
+        <name>resultado_professor</name>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <attributes/>
+    <GUI>
+      <xloc>400</xloc>
+      <yloc>208</yloc>
+    </GUI>
+  </transform>
+  <transform>
     <name>Text file input</name>
     <type>TextFileInput2</type>
     <description/>
@@ -220,85 +297,6 @@
     <attributes/>
     <GUI>
       <xloc>224</xloc>
-      <yloc>208</yloc>
-    </GUI>
-  </transform>
-  <transform>
-    <name>Select values</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <name>professor</name>
-        <rename/>
-      </field>
-      <field>
-        <name>resultado_professor</name>
-        <rename/>
-      </field>
-      <select_unspecified>N</select_unspecified>
-    </fields>
-    <attributes/>
-    <GUI>
-      <xloc>400</xloc>
-      <yloc>208</yloc>
-    </GUI>
-  </transform>
-  <transform>
-    <name>Dimension lookup/update</name>
-    <type>DimensionLookup</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <cache_size>5000</cache_size>
-    <commit>100</commit>
-    <connection>teste</connection>
-    <fields>
-      <date>
-        <from>date_from</from>
-        <name/>
-        <to>date_to</to>
-      </date>
-      <key>
-        <lookup>professor</lookup>
-        <name>professor</name>
-      </key>
-      <key>
-        <lookup>resultado_professor</lookup>
-        <name>resultado_professor</name>
-      </key>
-      <return>
-        <creation_method>tablemax</creation_method>
-        <name>sk_professor</name>
-        <rename/>
-        <version>version</version>
-      </return>
-    </fields>
-    <max_year>2199</max_year>
-    <min_year>1900</min_year>
-    <preload_cache>N</preload_cache>
-    <schema/>
-    <sequence/>
-    <start_date_field_name/>
-    <table>dim table name</table>
-    <update>Y</update>
-    <useBatch>N</useBatch>
-    <use_start_date_alternative>N</use_start_date_alternative>
-    <attributes/>
-    <GUI>
-      <xloc>608</xloc>
       <yloc>208</yloc>
     </GUI>
   </transform>

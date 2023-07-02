@@ -51,13 +51,14 @@
         <name/>
         <to>date_to</to>
       </date>
+      <field>
+        <lookup>resultado_disciplina</lookup>
+        <name>resultado_disciplina</name>
+        <update>Insert</update>
+      </field>
       <key>
         <lookup>disciplina</lookup>
         <name>disciplina</name>
-      </key>
-      <key>
-        <lookup>resultado_disciplina</lookup>
-        <name>resultado_disciplina</name>
       </key>
       <return>
         <creation_method>tablemax</creation_method>
@@ -66,13 +67,13 @@
         <version>version</version>
       </return>
     </fields>
-    <max_year>2199</max_year>
-    <min_year>1900</min_year>
+    <max_year>2023</max_year>
+    <min_year>2022</min_year>
     <preload_cache>N</preload_cache>
     <schema/>
     <sequence/>
     <start_date_field_name/>
-    <table>dim table name</table>
+    <table>dim_disciplina</table>
     <update>Y</update>
     <useBatch>N</useBatch>
     <use_start_date_alternative>N</use_start_date_alternative>
@@ -96,11 +97,9 @@
     <fields>
       <field>
         <name>disciplina</name>
-        <rename/>
       </field>
       <field>
         <name>resultado_disciplina</name>
-        <rename/>
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
